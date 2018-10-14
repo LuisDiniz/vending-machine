@@ -22,7 +22,9 @@ npm install
 
 ## Configurações
 
-Após instalar as dependências usadas no projeto, basta configurar a conexão com o banco de dados e o endereço e porta que a API vai rodar.
+Após instalar as dependências usadas no projeto, é necessário criar a estrutura do banco de dados, configurar a conexão com o banco de dados e configurar o endereço e porta que a API deve executar.
+
+Para criar as a base de dados e as tabelas do banco basta executar o script vending-machine/scripts/ddl.sql
 
 Para configurar a conexão com o banco de dados altere o arquivo vending-machine/config/dbConfig.js com as configurações do seu banco de dados. Exemplo:
 
@@ -80,7 +82,7 @@ O exemplo acima acessa a documentação da API usando o endereço e portal defau
 Para realizar os testes automatizados execute o seguinte comando via terminal no diretório raíz do projeto:
 
 ```
-npm teste
+npm test
 ```
 
 ## Ferramentas utilizas

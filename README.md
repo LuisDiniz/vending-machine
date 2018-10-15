@@ -53,13 +53,13 @@ host: localhost:3000
 ...
 ```
 
-Se preferir você pode instalar o swagger (https://www.npmjs.com/package/swagger) e configurar a documentação da API por meio do comando na raíz do seu projeto:
+Se preferir você pode configurar a documentação da API executando o seguinte comando na raíz do seu projeto:
 
 ```
 swagger project edit
 ```
 
-Ao executar o camndo uma página é carregada no navegador que permite alterar a documentação. A vantagem de utilizar a UI do swagger é que se você comentar algum erro de sintaxe a interface te notifica durante a edição.
+Ao executar o camando uma página é carregada no navegador que permite alterar a documentação. A vantagem de utilizar a UI do swagger é que se você comentar algum erro de sintaxe a interface te notifica durante a edição.
 
 Para mais informações sobre a sintaxe do swagger acesse: https://swagger.io/specification/v2/
 

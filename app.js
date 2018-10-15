@@ -1,10 +1,10 @@
 'use strict';
 
-const SwaggerExpress = require('swagger-express-mw');
-const swaggerTools = require('swagger-tools');
 const fs = require('fs');
 const path = require('path');
 const jsyaml = require('js-yaml');
+const swaggerTools = require('swagger-tools');
+const SwaggerExpress = require('swagger-express-mw');
 const app = require('express')();
 module.exports = app;
 
@@ -26,6 +26,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 SwaggerExpress.create(config, function(err, swaggerExpress) {
   if (err) { throw err; }
 
+  // Instalar middleware
   swaggerExpress.register(app);
 
   var port = process.env.PORT || 3000;

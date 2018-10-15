@@ -41,9 +41,8 @@ module.exports.save = async function (req, res){
         // Criar retorno de erro para saldo insuficiente
         let erro = {            
             "message": "Saldo insuficiente"
-        }
-        res.status(400);
-        return res.json(erro);
+        };
+        return res.status(400).json(erro);
     }
 }
 

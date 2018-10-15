@@ -24,7 +24,7 @@ npm install
 
 Após instalar as dependências usadas no projeto, é necessário criar a estrutura do banco de dados, configurar a conexão com o banco de dados e configurar o endereço e porta que a API deve executar.
 
-Para criar as a base de dados e as tabelas do banco basta executar o script vending-machine/scripts/ddl.sql
+Para criar as a base de dados e as tabelas do banco basta executar o script vending-machine/scripts/ddl.sql. Se desejar inserir alguns registros nas tabelas e para realizar testes execute o script vending-machine/scripts/dml.sql.
 
 Para configurar a conexão com o banco de dados altere o arquivo vending-machine/config/dbConfig.js com as configurações do seu banco de dados. Exemplo:
 

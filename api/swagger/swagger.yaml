@@ -89,8 +89,8 @@ paths:
             $ref: "#/definitions/SaldoResponse"
         "400":
           description: Saldo insuficiente
-          examples:
-            application/json: { "message":"Saldo insuficiente" }
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
         default:
           description: Erro
           schema:

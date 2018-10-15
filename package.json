@@ -1,0 +1,25 @@
+{
+  "name": "vending-machine",
+  "version": "0.0.1",
+  "private": true,
+  "description": "New Swagger API Project",
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.12.3",
+    "mssql": "^4.2.1",
+    "multi-tape": "^1.2.1",
+    "swagger-express-mw": "^0.7.0",
+    "tape": "^4.9.1"
+  },
+  "devDependencies": {
+    "should": "^7.1.1",
+    "supertest": "^1.2.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "node ./node_modules/.bin/multi-tape ./test/api/controllers/*.js"
+  }
+}

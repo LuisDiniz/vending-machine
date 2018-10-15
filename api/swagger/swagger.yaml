@@ -1,0 +1,190 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Vending Machine
+# during dev, should point to your local machine
+host: localhost:3000
+# basePath prefi xes all resource paths 
+basePath: /
+# 
+schemes:
+  - http
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+tags:
+  - name: "Cartões"
+  - name: "Lancamentos"  
+  - name: "Produtos"
+paths:
+  /cartoes/saldo/{cartaoId}:
+    x-swagger-router-controller: cartaoController
+    get:
+      description: "Retorna o saldo corrente do cartão"
+      operationId: getSaldo
+      tags:
+        - "Cartões"
+      parameters:
+        - in: path
+          name: cartaoId
+          description: "Código do cartão que o saldo deve ser cosultado"
+          type: integer
+          required: true
+      responses:
+        "200":
+          description: Sucesso
+          schema:
+            $ref: "#/definitions/SaldoResponse"
+        default:
+          description: Erro
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  /lancamentos/{cartaoId}:
+    x-swagger-router-controller: lancamentoController
+    get:
+      description: "Realiza um lancamento no cartão"
+      operationId: getLancamentos
+      tags:
+        - "Lancamentos"
+      parameters:
+        - in: path
+          name: cartaoId
+          description: "Código do cartão que os lançamentos devem ser retornados"
+          type: integer
+          required: true
+      responses:
+        "200":
+          description: Sucesso
+          schema:
+            $ref: "#/definitions/LancamentoResponse"
+        default:
+          description: Erro
+          schema:
+            $ref: "#/definitions/ErrorResponse"      
+            
+    post:
+      description: "Realiza um lancamento no cartão"
+      operationId: postLancamento
+      tags:
+        - "Lancamentos"
+      parameters:
+        - in: path
+          name: cartaoId
+          description: "Código do cartão que o lançamento deve ser realizado"
+          type: integer
+          required: true
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/LancamentoRequest"
+      responses:
+        "200":
+          description: Sucesso
+          schema:
+            $ref: "#/definitions/SaldoResponse"
+        "400":
+          description: Saldo insuficiente
+          examples:
+            application/json: { "message":"Saldo insuficiente" }
+        default:
+          description: Erro
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+            
+  /produtos:
+    x-swagger-router-controller: produtoController
+    get:
+      description: "Realiza um lancamento no cartão"
+      operationId: getProdutos
+      tags:
+        - "Produtos"
+      responses:
+        "200":
+          description: Sucesso
+          schema:
+            $ref: "#/definitions/ProdutoResponse"
+        default:
+          description: Erro
+          schema:
+            $ref: "#/definitions/ErrorResponse"             
+            
+  /produtos/{produtoId}:
+    x-swagger-router-controller: produtoController
+    get:
+      description: "Realiza um lancamento no cartão"
+      operationId: getProduto
+      tags:
+        - "Produtos"
+      parameters:
+        - in: path
+          name: produtoId
+          description: "Código do cartão que o lançamento deve ser realizado"
+          type: integer
+          required: true
+      responses:
+        "200":
+          description: Sucesso
+          schema:
+            $ref: "#/definitions/ProdutoResponse"
+        default:
+          description: Erro
+          schema:
+            $ref: "#/definitions/ErrorResponse"   
+            
+# complex objects have schema definitions
+definitions:
+
+#########################################################
+#                       Requests                        #
+#########################################################
+
+  LancamentoRequest:
+    required:
+      - "produtoId"
+    properties:
+      produtoId:
+        type: integer
+        
+#########################################################
+#                       Responses                       #
+#########################################################        
+        
+  SaldoResponse:
+    required:
+      - "saldo"
+    properties:
+      saldo:
+        type: number         
+        
+  ProdutoResponse:
+    properties:
+      produtoId:
+        type: integer
+      descricao:
+        type: string
+      preco:
+        type: number
+        
+  LancamentoResponse:
+    properties:
+      lancamentoId:
+        type: integer
+      descricao:
+        type: string
+      valor:
+        type: number
+      data:
+        type: string
+        format: data
+        
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
